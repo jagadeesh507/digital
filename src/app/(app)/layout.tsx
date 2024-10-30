@@ -4,8 +4,6 @@ import { Space_Grotesk } from 'next/font/google'
 import { Toaster } from 'sonner'
 
 import '@/app/(app)/globals.css'
-import GoogleAdsense from '@/components/GoogleAdsense'
-import GoogleAnalytics from '@/components/GoogleAnalytics'
 import Provider from '@/trpc/Provider'
 import { serverClient } from '@/trpc/serverClient'
 
@@ -79,9 +77,6 @@ export default async function RootLayout({
       <head>
         {/* added a explicit link tag because favicon is coming from site-settings */}
         <link rel='icon' type='image/x-icon' href={faviconUrl} />
-
-        <GoogleAnalytics metadata={metadata} />
-        <GoogleAdsense metadata={metadata} />
       </head>
       <body className={`${inter.className}`}>
         <Provider>{children}</Provider>

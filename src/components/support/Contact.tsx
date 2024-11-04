@@ -1,3 +1,4 @@
+import Button from '../common/Button'
 import Input from '../common/Input'
 import {
   Select,
@@ -10,7 +11,7 @@ import { Textarea } from '../common/Textarea'
 
 const Contact = () => {
   return (
-    <section className='mt-20 px-2'>
+    <section className='mx-auto mt-20 max-w-7xl px-2'>
       <h2 className='pb-8 text-3xl font-medium leading-normal lg:text-4xl xl:text-5xl'>
         Contact Us
       </h2>
@@ -66,6 +67,9 @@ const Contact = () => {
           </label>
           <Textarea placeholder='Enter your issue' />
         </div>
+      </div>
+      <div className='mt-4 flex items-center justify-end'>
+        <Button>Submit</Button>
       </div>
     </section>
   )

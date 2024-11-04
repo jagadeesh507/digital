@@ -11,7 +11,7 @@ import getScrollAnimation from '@/utils/getScrollAnimation'
 const Integrations = () => {
   const scrollAnimation = getScrollAnimation().top
   return (
-    <div className='mt-20 px-2'>
+    <div className='mx-auto mt-20 max-w-7xl px-2'>
       <ScrollAnimationWrapper>
         <h1 className='text-center text-3xl font-medium leading-normal lg:text-4xl xl:text-5xl'>
           Integrations

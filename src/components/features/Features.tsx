@@ -54,8 +54,8 @@ const Features = () => {
     },
   ]
   return (
-    <section className='relative mt-20 px-2'>
-      <div
+    <section className='relative mx-auto mt-20 max-w-7xl px-2'>
+      {/* <div
         className='pointer-events-none absolute left-[50%] top-0 -translate-x-1/2 -translate-y-[30%] opacity-50 blur-2xl'
         aria-hidden='true'>
         <svg xmlns='http://www.w3.org/2000/svg' width='434' height='427'>
@@ -77,7 +77,7 @@ const Features = () => {
             transform='matrix(1 0 0 -1 0 427)'
           />
         </svg>
-      </div>
+      </div> */}
       <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
         {features?.map((feature, index) => (
           <div className='space-y-2' key={index}>

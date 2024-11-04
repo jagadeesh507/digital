@@ -10,7 +10,7 @@ const About = () => {
   const scrollLeft = getScrollAnimation()?.left
   const scrollRight = getScrollAnimation()?.right
   return (
-    <div className='mt-20 overflow-hidden px-2'>
+    <div className='mx-auto mt-20 max-w-7xl overflow-hidden px-2'>
       <ScrollAnimationWrapper className='flex min-h-[400px] w-full flex-col items-center justify-between gap-6 sm:text-center md:flex-row md:text-left'>
         <motion.div variants={scrollRight} className='w-full space-y-2'>
           <h2 className='text-3xl font-medium leading-normal lg:text-4xl xl:text-5xl'>

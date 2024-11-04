@@ -10,7 +10,7 @@ import getScrollAnimation from '@/utils/getScrollAnimation'
 const Hero = () => {
   const scrollAnimation = getScrollAnimation()?.top
   return (
-    <div className='px-2'>
+    <div className='mx-auto max-w-7xl px-2'>
       <ScrollAnimationWrapper>
         <motion.div
           className='grid grid-flow-row grid-rows-2 gap-8 sm:grid-flow-col sm:grid-cols-2 md:grid-rows-1'

@@ -2,13 +2,10 @@
 
 import Button from '../common/Button'
 import { Glow, GlowCapture } from '../common/Glow'
-import ScrollAnimationWrapper from '../common/ScrollAnimationWrapper'
-import { motion } from 'framer-motion'
 import React from 'react'
 
 import { pricing } from '@/data/pricing'
 import { cn } from '@/utils/cn'
-import getScrollAnimation from '@/utils/getScrollAnimation'
 
 const Pricing = () => {
   return (
@@ -59,7 +56,6 @@ const PricingCard = ({
     features: string[]
   }
 }) => {
-  const scrollAnimation = getScrollAnimation().top
   const {
     active,
     buttonText,
@@ -70,7 +66,7 @@ const PricingCard = ({
     features,
   } = plan
   return (
-    <div className='h-full w-full '>
+    <div className='mx-auto h-full  max-w-7xl '>
       <div
         className={cn(
           'glowable relative mb-10   h-full  overflow-hidden rounded-md border-[2px] border-transparent bg-base-200 px-8 py-10',
@@ -90,18 +86,13 @@ const PricingCard = ({
         <p className='mb-8 border-b border-base-300 pb-8 text-base-content/80 '>
           {description}
         </p>
-        <ScrollAnimationWrapper>
-          <div className='mb-9 flex flex-col gap-[14px]'>
-            {features?.map((feature, index) => (
-              <motion.div
-                custom={{ duration: 2 + index }}
-                variants={scrollAnimation}
-                key={index}>
-                <List key={index}>{feature}</List>
-              </motion.div>
-            ))}
-          </div>
-        </ScrollAnimationWrapper>
+        <div className='mb-9 flex flex-col gap-[14px]'>
+          {features?.map((feature, index) => (
+            <div key={index}>
+              <List key={index}>{feature}</List>
+            </div>
+          ))}
+        </div>
         <Button
           className={cn(
             'absolute bottom-4 left-[50%] h-12 w-[calc(100%-3rem)] -translate-x-[50%]',

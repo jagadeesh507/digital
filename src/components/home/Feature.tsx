@@ -10,7 +10,7 @@ const Feature = () => {
   const scrollLeft = getScrollAnimation()?.left
   const scrollRight = getScrollAnimation()?.right
   return (
-    <div className='mt-20 px-2'>
+    <div className='mx-auto mt-20 max-w-7xl px-2'>
       <ScrollAnimationWrapper className='flex min-h-[400px] w-full flex-col items-center justify-between gap-6 md:flex-row'>
         <motion.div
           variants={scrollLeft}

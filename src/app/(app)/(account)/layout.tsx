@@ -1,5 +1,3 @@
-import configPromise from '@payload-config'
-import { getPayloadHMR } from '@payloadcms/next/utilities'
 import { headers } from 'next/headers'
 
 import { getCurrentUser } from '@/utils/getCurrentUser'
@@ -9,13 +7,6 @@ interface LayoutProps {
 }
 
 const AccountLayout: React.FC<LayoutProps> = async ({ children }) => {
-  const payload = await getPayloadHMR({ config: configPromise })
-
-  const initData = await payload.findGlobal({
-    slug: 'site-settings',
-    draft: false,
-  })
-
   const headersList = await headers()
   const user = await getCurrentUser(headersList)
 

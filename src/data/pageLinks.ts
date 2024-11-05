@@ -13,5 +13,9 @@ export const pageLinks = {
       label: 'Support',
       href: '/support',
     },
+    {
+      label: 'Themes',
+      href: '/themes',
+    },
   ],
 }

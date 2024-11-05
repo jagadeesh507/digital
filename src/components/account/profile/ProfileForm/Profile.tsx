@@ -102,7 +102,7 @@ const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
             />
           </button>
         </div>
-        <div className='mt-5 text-sm'>
+        {/* <div className='mt-5 text-sm'>
           <a
             href='#'
             className='text-xl font-medium leading-none text-base-content transition duration-500 ease-in-out hover:text-primary'>
@@ -111,7 +111,7 @@ const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
           {user?.role.some(role => role === 'author') && (
             <p className='mt-2 text-base-content'>Author</p>
           )}
-        </div>
+        </div> */}
       </div>
       {open && (
         <div
@@ -123,7 +123,7 @@ const Profile = ({ initialUser }: { initialUser: User | undefined }) => {
 
           <div className='fixed inset-0 z-[100] w-screen overflow-y-auto'>
             <div className='flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0'>
-              <div className='relative transform overflow-hidden rounded-rounded-box bg-base-300 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
+              <div className='rounded-rounded-box relative transform overflow-hidden bg-base-300 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg'>
                 <div className='p-4 text-center'>
                   <div className='group relative mx-auto mb-4 h-40 w-40'>
                     <Image

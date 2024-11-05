@@ -19,7 +19,7 @@ type ProfileFormDataType = z.infer<typeof ProfileFormSchema>
 
 const ProfileForm = ({ user }: { user: User }) => {
   const [formData, setFormData] = useState<ProfileFormDataType>({
-    name: user?.username,
+    // name: user?.username,
     password: '',
     confirmPassword: '',
   })
@@ -76,7 +76,7 @@ const ProfileForm = ({ user }: { user: User }) => {
           <form
             onSubmit={handleUserUpdateForm}
             className='mt-8 items-center sm:mt-14'>
-            <div className='mb-4 sm:mb-6'>
+            {/* <div className='mb-4 sm:mb-6'>
               <label
                 htmlFor='name'
                 className='block text-sm font-medium text-base-content/70'>
@@ -91,7 +91,7 @@ const ProfileForm = ({ user }: { user: User }) => {
                 onChange={handleOnChange}
                 className='mt-1 w-full rounded-md bg-base-200 p-2 text-base-content transition-colors duration-300 focus:border-base-content/40 focus:outline-none focus:ring-1 focus:ring-base-content/40 focus:ring-offset-1'
               />
-            </div>
+            </div> */}
 
             <div className='mb-4 sm:mb-6'>
               <label
@@ -145,7 +145,7 @@ const ProfileForm = ({ user }: { user: User }) => {
             <div className='flex justify-end'>
               <button
                 type='submit'
-                className='w-full rounded-lg  bg-primary px-5 py-2.5 text-center text-sm font-medium text-base-content hover:bg-primary-focus focus:outline-none focus:ring-4 focus:ring-primary/30 sm:w-auto'>
+                className='hover:bg-primary-focus w-full  rounded-lg bg-primary px-5 py-2.5 text-center text-sm font-medium text-base-content focus:outline-none focus:ring-4 focus:ring-primary/30 sm:w-auto'>
                 {isUpdateUserPending ? 'Updating...' : 'Update Profile'}
               </button>
             </div>

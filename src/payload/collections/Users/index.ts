@@ -1,4 +1,8 @@
+import { env } from '@env'
 import { CollectionConfig } from 'payload'
+
+import { ResetPassword } from '@/emails/reset-password'
+import { UserAccountVerification } from '@/emails/verify-email'
 
 import { isAdminOrCurrentUser } from './access/isAdminOrCurrentUser'
 import { authorAccessAfterUpdate } from './hooks/authorAccessAfterUpdate'
@@ -13,6 +17,27 @@ export const Users: CollectionConfig = {
   auth: {
     cookies: {
       secure: true,
+      sameSite: 'Lax',
+    },
+    tokenExpiration: 604800,
+    verify: {
+      generateEmailHTML: ({ token, user }) => {
+        return UserAccountVerification({
+          actionLabel: 'verify your account',
+          buttonText: 'Verify Account',
+          userName: 'user',
+          image: user.imageUrl,
+          href: `${env.PAYLOAD_URL}/verify?token=${token}&id=${user.id}`,
+        })
+      },
+    },
+    forgotPassword: {
+      generateEmailHTML: args => {
+        return ResetPassword({
+          userFirstName: 'User',
+          resetPasswordLink: `${env.PAYLOAD_URL}/reset-password?token=${args?.token}`,
+        })
+      },
     },
   },
   hooks: {

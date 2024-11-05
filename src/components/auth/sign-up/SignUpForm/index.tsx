@@ -5,7 +5,6 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { GoCheckCircleFill } from 'react-icons/go'
-import slugify from 'slugify'
 import { toast } from 'sonner'
 
 import { Alert, AlertDescription } from '@/components/common/Alert'
@@ -23,7 +22,7 @@ const SignUpForm: React.FC = () => {
     resolver: zodResolver(SignUpFormSchema),
     mode: 'onBlur',
     defaultValues: {
-      username: '',
+      // username: '',
       email: '',
       password: '',
       confirmPassword: '',
@@ -109,7 +108,7 @@ const SignUpForm: React.FC = () => {
           </h1>
 
           <form onSubmit={handleSubmit(onSubmit)} className='space-y-4'>
-            <div>
+            {/* <div>
               <LabelInputContainer className='mb-4'>
                 <div className='inline-flex justify-between'>
                   <label
@@ -142,7 +141,7 @@ const SignUpForm: React.FC = () => {
                   placeholder='Doe'
                 />
               </LabelInputContainer>
-            </div>
+            </div> */}
 
             <div>
               <LabelInputContainer className='mb-4'>

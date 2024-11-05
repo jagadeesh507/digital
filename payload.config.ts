@@ -1,10 +1,13 @@
 import { env } from '@env'
 import { mongooseAdapter } from '@payloadcms/db-mongodb'
+import { resendAdapter } from '@payloadcms/email-resend'
 import { slateEditor } from '@payloadcms/richtext-slate'
 import path from 'path'
 import { RichTextAdapterProvider, buildConfig } from 'payload'
+import sharp from 'sharp'
 import { fileURLToPath } from 'url'
 
+import { Media } from '@/payload/collections/Media'
 import { Users } from '@/payload/collections/Users'
 
 const filename = fileURLToPath(import.meta.url)
@@ -61,13 +64,20 @@ export default buildConfig({
   admin: {
     user: Users.slug,
   },
-  editor: slateEditor({}),
-  collections: [Users],
+  collections: [Users, Media],
   db: mongooseAdapter({
     url: env.DATABASE_URI,
   }),
+  email: resendAdapter({
+    defaultFromAddress: env.RESEND_SENDER_EMAIL,
+    defaultFromName: env.RESEND_SENDER_NAME,
+    apiKey: env.RESEND_API_KEY,
+  }),
+
+  sharp,
+  editor,
   typescript: {
-    outputFile: path.resolve(__dirname, 'payload-types.ts'),
+    outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   secret: env.PAYLOAD_SECRET,
 })

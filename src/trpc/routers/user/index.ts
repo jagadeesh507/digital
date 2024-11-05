@@ -1,4 +1,3 @@
-import { collectionSlug } from '@contentql/core'
 import configPromise from '@payload-config'
 import { Media } from '@payload-types'
 import { getPayloadHMR } from '@payloadcms/next/utilities'
@@ -65,7 +64,7 @@ export const userRouter = router({
 
       try {
         const updatedUser = await payload.update({
-          collection: collectionSlug.users,
+          collection: 'users',
           id: user.id,
           data,
         })
@@ -85,7 +84,7 @@ export const userRouter = router({
 
     try {
       await payload.delete({
-        collection: collectionSlug.users,
+        collection: 'users',
         id: user.id,
       })
       const cookieStore = await cookies()

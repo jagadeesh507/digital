@@ -1,8 +1,8 @@
 import { CollectionConfig } from 'payload'
 
-import { isAdminOrCurrentUser } from './access/isAdminOrCurrentUser.js'
-import { authorAccessAfterUpdate } from './hooks/authorAccessAfterUpdate.js'
-import { handleUserRoles } from './hooks/handleUserRoles.js'
+import { isAdminOrCurrentUser } from './access/isAdminOrCurrentUser'
+import { authorAccessAfterUpdate } from './hooks/authorAccessAfterUpdate'
+import { handleUserRoles } from './hooks/handleUserRoles'
 
 export const Users: CollectionConfig = {
   slug: 'users',

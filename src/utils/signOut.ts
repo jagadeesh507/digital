@@ -12,11 +12,13 @@
  * // The user will be signed out, and the page will be reloaded.
  * ```
  */
-export const signOut = async (): Promise<void> => {
+export const signOut = async () => {
   try {
-    await fetch('/api/users/logout', { method: 'POST' })
+    const response = await fetch('/api/users/logout', { method: 'POST' })
+    return response.json()
   } catch (error) {
-    console.error('Sign-out failed:', error)
+    console.log(error)
   }
-  window.location.reload()
+
+  // window.location.reload()
 }

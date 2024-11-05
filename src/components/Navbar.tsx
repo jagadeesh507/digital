@@ -1,18 +1,25 @@
 'use client'
 
+import { User } from '@payload-types'
 import { motion, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Flame } from 'lucide-react'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { useState } from 'react'
 
 import { pageLinks } from '@/data/pageLinks'
 
 import MobileMenu from './MobileMenu'
+import ProfileDropdown from './ProfileDropdown'
 import Button from './common/Button'
 
-const Navbar = () => {
+const Navbar = ({ user }: { user: User }) => {
   const [hidden, setHidden] = useState(false)
   const { scrollY } = useScroll()
+
+  const pathName = usePathname()
+  let paths = pathName.split('/')
+  let isExists = paths.includes('dashboard')
 
   useMotionValueEvent(scrollY, 'change', latest => {
     const prev = scrollY?.getPrevious()
@@ -33,35 +40,52 @@ const Navbar = () => {
           <Flame fill='#10B981' color='#10B981' />
           <h5 className='text-lg font-bold'>TranquilTech</h5>
         </Link>
-        <div className='flex items-center justify-end'>
-          <nav className='hidden lg:flex'>
-            {/* Desktop menu links */}
-            <ul className='flex items-center'>
-              {pageLinks.header.map(({ label, href }) => (
-                <li key={label}>
-                  <Link
-                    className='mx-4 text-sm font-medium text-base-content/80 transition duration-150 ease-in-out hover:text-base-content lg:mx-5'
-                    href={href}>
-                    {label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className='flex items-center'>
-            <div className='flex items-center justify-end gap-x-4 lg:gap-x-8'>
-              <Link
-                href='sign-in'
-                className='ml-2 text-sm font-medium text-base-content/80 transition duration-150 ease-in-out hover:text-base-content '>
-                SignIn
-              </Link>
-              <Button size={'sm'} variant={'default'}>
-                <Link href='sign-up'>SignUp</Link>
-              </Button>
+        {user ? (
+          <ul className='flex items-center justify-end'>
+            {!isExists && (
+              <li>
+                <Link
+                  className='mx-4 text-sm font-medium text-base-content/80 transition duration-150 ease-in-out hover:text-base-content lg:mx-5'
+                  href={'/dashboard'}>
+                  Dashboard
+                </Link>
+              </li>
+            )}
+            <li>
+              <ProfileDropdown user={user} />
+            </li>
+          </ul>
+        ) : (
+          <div className='flex items-center justify-end'>
+            <nav className='hidden lg:flex'>
+              {/* Desktop menu links */}
+              <ul className='flex items-center'>
+                {pageLinks.header.map(({ label, href }) => (
+                  <li key={label}>
+                    <Link
+                      className='mx-4 text-sm font-medium text-base-content/80 transition duration-150 ease-in-out hover:text-base-content lg:mx-5'
+                      href={href}>
+                      {label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+            <div className='flex items-center'>
+              <div className='flex items-center justify-end gap-x-4 lg:gap-x-8'>
+                <Link
+                  href='sign-in'
+                  className='ml-2 text-sm font-medium text-base-content/80 transition duration-150 ease-in-out hover:text-base-content '>
+                  SignIn
+                </Link>
+                <Button size={'sm'} variant={'default'}>
+                  <Link href='sign-up'>SignUp</Link>
+                </Button>
+              </div>
+              <MobileMenu />
             </div>
-            <MobileMenu />
           </div>
-        </div>
+        )}
       </div>
     </motion.header>
   )

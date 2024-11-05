@@ -73,21 +73,13 @@ export const Users: CollectionConfig = {
       //   update: adminOrCurrentUserFieldAccess,
       // },
     },
-    // slugField({
-    //   fieldToUse: 'username',
-    //   overrides: {
-    //     name: 'username',
-    //     label: 'Username',
-    //     type: 'text',
-    //     saveToJWT: true,
-    //     required: true,
-    //     unique: true,
-    //     admin: {
-    //       readOnly: false,
-    //       position: undefined,
-    //     },
-    //   },
-    // }),
+    {
+      name: 'username',
+      label: 'Username',
+      type: 'text',
+      saveToJWT: true,
+      unique: true,
+    },
     {
       name: 'imageUrl',
       type: 'upload',
@@ -95,6 +87,12 @@ export const Users: CollectionConfig = {
       // access: {
       //   update: adminOrCurrentUserFieldAccess,
       // },
+    },
+
+    {
+      name: 'avatar',
+      type: 'text',
+      label: 'Avatar',
     },
     // only admin can update the role field
     {

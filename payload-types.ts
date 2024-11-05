@@ -51,7 +51,9 @@ export interface UserAuthOperations {
 export interface User {
   id: string;
   displayName?: string | null;
+  username?: string | null;
   imageUrl?: (string | null) | Media;
+  avatar?: string | null;
   role: ('admin' | 'author' | 'user')[];
   emailVerified?: string | null;
   updatedAt: string;

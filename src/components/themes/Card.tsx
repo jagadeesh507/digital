@@ -20,7 +20,7 @@ const Card = ({
       <div className='h-96 w-full overflow-hidden rounded-md'>
         <Image
           onClick={() => setOpen(true)}
-          className='h-full w-full cursor-pointer transition-all duration-500  hover:scale-110 '
+          className='h-full w-full cursor-pointer transition-all  duration-500 hover:scale-110  '
           width={1000}
           height={10000}
           src={image}
